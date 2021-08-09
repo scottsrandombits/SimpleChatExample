@@ -1,0 +1,41 @@
+{
+  "name": "chat_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx ts-node-dev --no-notify --respawn --transpile-only src/server",
+    "start": "node dist/server",
+    "clean": "rm -rf dist",
+    "docker": "docker compose up -d",
+    "build": "npm -s run clean && npm -s run generate && tsc",
+    "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
+    "generate:prisma": "prisma generate",
+    "generate:nexus": "ts-node --transpile-only src/schema"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/graphql-iso-date": "^3.4.0",
+    "@types/jsonwebtoken": "^8.5.4",
+    "@types/node": "^16.4.13",
+    "prisma": "^2.28.0",
+    "ts-node": "^10.2.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "^8.0.3",
+    "@prisma/client": "^2.28.0",
+    "apollo-server-express": "^3.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-subscriptions": "^1.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "nexus": "^1.1.0",
+    "subscriptions-transport-ws": "^0.9.19"
+  }
+}
